@@ -52,12 +52,12 @@ spec:
     spec:
       containers:
         - name: fakeshop
-          image: dgsbarbosa/fake-shop:v3
+          image: dgsbarbosa/fake-shop:latest
           ports:
             - containerPort: 5000
           env:
             - name: DB_HOST
-              value: postgre
+              value: postgres
             - name: DB_USER
               value: "fakeshop"
             - name: DB_PASSWORD

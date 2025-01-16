@@ -5,6 +5,7 @@ RUN python -m pip install -r requirements.txt
 WORKDIR /app
 COPY . /app
 RUN chmod +x /app/entrypoint.sh
+RUN echo "python -m flask db upgrade" > entrypoint.sh && echo "python -m gunicorn --bind 0.0.0.0:5000 index:app" >> entrypoint.sh
 ENV PROMETHEUS_MULTIPROC_DIR=/tmp/metrics
 RUN mkdir -p /tmp/metrics 
-CMD ["/bin/bash", "/app/entrypoint.sh"]
+CMD ["/bin/bash","/app/entrypoint.sh"]
