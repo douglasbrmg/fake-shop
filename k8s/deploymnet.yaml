@@ -2,37 +2,36 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgre
+  name: postgres
 spec:
   selector:
     matchLabels:
-      app: postgre
+      app: postgres
   template:
     metadata:
       labels:
-        app: postgre
+        app: postgres
     spec:
       containers:
-        - name: postgre
+        - name: postgres
           image: postgres:13.16
           ports:
             - containerPort: 5432
           env:
+            - name: POSTGRES_DB
+              value: "fakeshop"
             - name: POSTGRES_USER
               value: "fakeshop"
             - name: POSTGRES_PASSWORD
               value: "Pg1234"
-            - name: POSTGRES_DB
-              value: "fakeshop"
-        
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgre
+  name: postgres
 spec:
   selector:
-    app: postgre
+    app: postgres
   ports:
   - port: 5432
     targetPort: 5432          
