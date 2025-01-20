@@ -61,6 +61,7 @@ jobs:
         with:
            manifests: |
               ./k8s/deploymnet.yaml
+              ./prometheus/deployment.yaml
            images: |
               dgsbarbosa/fake-shop:v${{ github.run_number }}
 
